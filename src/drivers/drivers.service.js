@@ -6,6 +6,10 @@ const driversService = {
     return Drivers.findById(id);
   },
 
+  getAll() {
+    return Drivers.find();
+  },
+
   create(params) {
     return Drivers.create(params);
   },

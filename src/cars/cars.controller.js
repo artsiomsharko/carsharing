@@ -25,6 +25,26 @@ class CarsController {
     }
   }
 
+  async getLowFuelInUse(req, res) {
+    try {
+      const cars = await CarsService.getLowFuelInUse();
+
+      return res.json(cars);
+    } catch (e) {
+      res.status(500).json(e.message);
+    }
+  }
+
+  async getReservedUnauthorized(req, res) {
+    try {
+      const cars = await CarsService.getReservedUnauthorized();
+
+      return res.json(cars);
+    } catch (e) {
+      res.status(500).json(e.message);
+    }
+  }
+
   async create(req, res) {
     try {
       const params = req.body;
@@ -48,6 +68,26 @@ class CarsController {
       }
 
       return res.json(updatedCar);
+    } catch (e) {
+      res.status(500).json(e.message);
+    }
+  }
+
+  async moveOldInService(req, res) {
+    try {
+      const cars = await CarsService.moveOldInService();
+
+      return res.json(cars);
+    } catch (e) {
+      res.status(500).json(e.message);
+    }
+  }
+
+  async changeLocationForFree(req, res) {
+    try {
+      const cars = await CarsService.changeLocationForFree();
+
+      return res.json(cars);
     } catch (e) {
       res.status(500).json(e.message);
     }

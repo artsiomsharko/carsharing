@@ -4,6 +4,7 @@ const validateObjectId = require("../middlewares/objectId");
 
 const router = new Router();
 
+router.get("/", driversController.getAll);
 router.get("/:id", validateObjectId, driversController.getOne);
 router.post("/", driversController.create);
 router.put("/:id", validateObjectId, driversController.update);

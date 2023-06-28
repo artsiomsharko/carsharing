@@ -1,8 +1,8 @@
 const CarModels = require("./carModels.model");
 
 const carModelsService = {
-  getAll() {
-    return CarModels.find();
+  getAll(params) {
+    return CarModels.find(params);
   },
 
   create(params) {
