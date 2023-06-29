@@ -1,4 +1,4 @@
-const DriversService = require("./drivers.service");
+import DriversService from "./drivers.service";
 
 class DriversController {
   async getOne(req, res) {
@@ -62,4 +62,4 @@ class DriversController {
   }
 }
 
-module.exports = new DriversController();
+export default new DriversController();

@@ -1,7 +1,7 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const router = require("./router");
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import router from "./router";
 
 console.clear();
 
@@ -27,5 +27,11 @@ async function start() {
 
   app.listen(port, () => console.log("Express app started on port:", port));
 }
+
+function foo(a) {
+  return a * 3;
+}
+
+console.log(foo(4));
 
 start();

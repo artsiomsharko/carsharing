@@ -1,5 +1,5 @@
-const RunsService = require("./runs.service");
-const CarsService = require("../cars/cars.service");
+import RunsService from "./runs.service";
+import CarsService from "../cars/cars.service";
 
 class RunsController {
   async getAllForCar(req, res) {
@@ -72,4 +72,4 @@ class RunsController {
   }
 }
 
-module.exports = new RunsController();
+export default new RunsController();

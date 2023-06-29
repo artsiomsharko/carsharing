@@ -1,5 +1,5 @@
-const PaymentCardsService = require("../paymentCards/paymentCards.service");
-const Drivers = require("./drivers.model");
+import PaymentCardsService from "../paymentCards/paymentCards.service";
+import Drivers from "./drivers.model";
 
 const driversService = {
   getOne(id) {
@@ -27,4 +27,4 @@ const driversService = {
   },
 };
 
-module.exports = driversService;
+export default driversService;

@@ -1,4 +1,4 @@
-const CarModels = require("./carModels.model");
+import CarModels from "./carModels.model";
 
 const carModelsService = {
   getAll(params) {
@@ -18,4 +18,4 @@ const carModelsService = {
   },
 };
 
-module.exports = carModelsService;
+export default carModelsService;

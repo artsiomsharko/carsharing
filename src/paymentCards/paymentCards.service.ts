@@ -1,4 +1,4 @@
-const PaymentCards = require("./paymentCards.model");
+import PaymentCards from "./paymentCards.model";
 
 const paymentCardsService = {
   getOne(id) {
@@ -26,4 +26,4 @@ const paymentCardsService = {
   },
 };
 
-module.exports = paymentCardsService;
+export default paymentCardsService;

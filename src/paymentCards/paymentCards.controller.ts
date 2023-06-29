@@ -1,4 +1,4 @@
-const PaymentCardsService = require("./paymentCards.service");
+import PaymentCardsService from "./paymentCards.service";
 
 class PaymentCardsController {
   async getAllForDriver(req, res) {
@@ -68,4 +68,4 @@ class PaymentCardsController {
   }
 }
 
-module.exports = new PaymentCardsController();
+export default new PaymentCardsController();

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -8,4 +8,4 @@ const DriversSchema = new Schema({
   lastName: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Drivers", DriversSchema);
+export default mongoose.model("Drivers", DriversSchema);

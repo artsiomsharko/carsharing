@@ -1,8 +1,8 @@
-const { Router } = require("express");
-const carsController = require("./cars.controller");
-const validateObjectId = require("../middlewares/objectId");
+import { Router } from "express";
+import carsController from "./cars.controller";
+import validateObjectId from "../middlewares/objectId";
 
-const router = new Router();
+const router = Router();
 
 router.get("/", carsController.getAll);
 router.get("/low-fuel", carsController.getLowFuelInUse);
@@ -17,4 +17,4 @@ router.put("/:id", validateObjectId, carsController.update);
 
 router.delete("/:vin", carsController.deleteByVin);
 
-module.exports = router;
+export default router;

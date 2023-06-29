@@ -1,4 +1,4 @@
-const CarsService = require("./cars.service");
+import CarsService from "./cars.service";
 
 class CarsController {
   async getAll(req, res) {
@@ -109,4 +109,4 @@ class CarsController {
   }
 }
 
-module.exports = new CarsController();
+export default new CarsController();

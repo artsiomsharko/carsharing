@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
@@ -9,4 +9,4 @@ const PaymentsCardsSchema = new Schema({
   validThrough: { type: Date, required: true },
 });
 
-module.exports = mongoose.model("PaymentsCards", PaymentsCardsSchema);
+export default mongoose.model("PaymentsCards", PaymentsCardsSchema);

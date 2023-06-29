@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 function validateObjectId(req, res, next) {
   const { id } = req.params;
@@ -12,4 +12,4 @@ function validateObjectId(req, res, next) {
   next();
 }
 
-module.exports = validateObjectId;
+export default validateObjectId;

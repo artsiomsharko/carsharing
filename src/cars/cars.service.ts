@@ -1,5 +1,5 @@
-const CarModelsService = require("../carModels/carModels.service");
-const Cars = require("./cars.model");
+import CarModelsService from "../carModels/carModels.service";
+import Cars from "./cars.model";
 
 const carsService = {
   getOne(params) {
@@ -103,10 +103,10 @@ const carsService = {
     const car = await Cars.findByIdAndUpdate(id, params, { new: true });
 
     if (!params.productionInfoId && params.productionInfo) {
-      car.productionInfoId = await CarModelsService.update(
+      car.productionInfoId = await (CarModelsService.update(
         car.productionInfoId,
         params.productionInfo
-      );
+      ) as any);
     }
 
     return car;
@@ -179,4 +179,4 @@ const carsService = {
   },
 };
 
-module.exports = carsService;
+export default carsService;

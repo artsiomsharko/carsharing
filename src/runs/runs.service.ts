@@ -1,5 +1,5 @@
-const CarsService = require("../cars/cars.service");
-const Runs = require("./runs.model");
+import CarsService from "../cars/cars.service";
+import Runs from "./runs.model";
 
 const runsService = {
   getOne(id) {
@@ -36,4 +36,4 @@ const runsService = {
   },
 };
 
-module.exports = runsService;
+export default runsService;
