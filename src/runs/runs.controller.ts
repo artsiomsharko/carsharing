@@ -1,8 +1,10 @@
 import RunsService from "./runs.service";
 import CarsService from "../cars/cars.service";
+import { Request, Response } from "express";
+import { type ParamsRequest } from "../helpers/types";
 
 class RunsController {
-  async getAllForCar(req, res) {
+  async getAllForCar(req: ParamsRequest, res: Response) {
     try {
       const carId = req.params.id;
       const cars = await RunsService.getAllForCar(carId);
@@ -13,7 +15,7 @@ class RunsController {
     }
   }
 
-  async getOne(req, res) {
+  async getOne(req: ParamsRequest, res: Response) {
     try {
       const runId = req.params.id;
       const run = await RunsService.getOne(runId);
@@ -28,7 +30,7 @@ class RunsController {
     }
   }
 
-  async create(req, res) {
+  async create(req: Request, res: Response) {
     try {
       const params = req.body;
       const run = await RunsService.create(params);
@@ -43,7 +45,7 @@ class RunsController {
     }
   }
 
-  async update(req, res) {
+  async update(req: ParamsRequest, res: Response) {
     try {
       const runId = req.params.id;
       const params = req.body;
@@ -60,7 +62,7 @@ class RunsController {
     }
   }
 
-  async delete(req, res) {
+  async delete(req: ParamsRequest, res: Response) {
     try {
       const runId = req.params.id;
       const deletedRun = RunsService.delete(runId);

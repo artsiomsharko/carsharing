@@ -1,7 +1,9 @@
 import CarsService from "./cars.service";
+import { type ParamsRequest } from "../helpers/types";
+import { Request, Response } from "express";
 
 class CarsController {
-  async getAll(req, res) {
+  async getAll(req: Request, res: Response) {
     try {
       const cars = await CarsService.getAll();
       return res.json(cars);
@@ -10,7 +12,7 @@ class CarsController {
     }
   }
 
-  async getOne(req, res) {
+  async getOne(req: ParamsRequest, res: Response) {
     try {
       const carId = req.params.id;
       const car = await CarsService.getOneById(carId);
@@ -25,7 +27,7 @@ class CarsController {
     }
   }
 
-  async getLowFuelInUse(req, res) {
+  async getLowFuelInUse(req: Request, res: Response) {
     try {
       const cars = await CarsService.getLowFuelInUse();
 
@@ -35,7 +37,7 @@ class CarsController {
     }
   }
 
-  async getReservedUnauthorized(req, res) {
+  async getReservedUnauthorized(req: Request, res: Response) {
     try {
       const cars = await CarsService.getReservedUnauthorized();
 
@@ -45,7 +47,7 @@ class CarsController {
     }
   }
 
-  async create(req, res) {
+  async create(req: Request, res: Response) {
     try {
       const params = req.body;
       const car = await CarsService.create(params);
@@ -56,7 +58,7 @@ class CarsController {
     }
   }
 
-  async update(req, res) {
+  async update(req: ParamsRequest, res: Response) {
     try {
       const carId = req.params.id;
       const params = req.body;
@@ -73,7 +75,7 @@ class CarsController {
     }
   }
 
-  async moveOldInService(req, res) {
+  async moveOldInService(req: Request, res: Response) {
     try {
       const cars = await CarsService.moveOldInService();
 
@@ -83,7 +85,7 @@ class CarsController {
     }
   }
 
-  async changeLocationForFree(req, res) {
+  async changeLocationForFree(req: Request, res: Response) {
     try {
       const cars = await CarsService.changeLocationForFree();
 
@@ -93,7 +95,7 @@ class CarsController {
     }
   }
 
-  async deleteByVin(req, res) {
+  async deleteByVin(req: Request, res: Response) {
     try {
       const vin = req.params.vin;
       const deletedCar = await CarsService.deleteByVin(vin);

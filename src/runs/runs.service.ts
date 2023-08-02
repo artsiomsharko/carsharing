@@ -1,24 +1,25 @@
+import { Types } from "mongoose";
 import CarsService from "../cars/cars.service";
-import Runs from "./runs.model";
+import Runs, { Run } from "./runs.model";
 
 const runsService = {
-  getOne(id) {
+  getOne(id: Types.ObjectId) {
     return Runs.findById(id);
   },
 
-  getAllForCar(carId) {
+  getAllForCar(carId: Types.ObjectId) {
     return Runs.find({ carId });
   },
 
-  create(params) {
+  create(params: Run) {
     return Runs.create(params);
   },
 
-  update(id, params) {
+  update(id: Types.ObjectId, params: Partial<Run>) {
     return Runs.findByIdAndUpdate(id, params, { new: true });
   },
 
-  async delete(id) {
+  async delete(id: Types.ObjectId) {
     const run = await Runs.findById(id);
 
     if (!run) {

@@ -1,8 +1,9 @@
+import { Types } from "mongoose";
 import PaymentCardsService from "../paymentCards/paymentCards.service";
-import Drivers from "./drivers.model";
+import Drivers, { Driver } from "./drivers.model";
 
 const driversService = {
-  getOne(id) {
+  getOne(id: Types.ObjectId) {
     return Drivers.findById(id);
   },
 
@@ -10,15 +11,15 @@ const driversService = {
     return Drivers.find();
   },
 
-  create(params) {
+  create(params: Driver) {
     return Drivers.create(params);
   },
 
-  update(id, params) {
+  update(id: Types.ObjectId, params: Partial<Driver>) {
     return Drivers.findByIdAndUpdate(id, params, { new: true });
   },
 
-  async delete(id) {
+  async delete(id: Types.ObjectId) {
     const deletedDriver = Drivers.findByIdAndDelete(id);
 
     await PaymentCardsService.deleteAllForDriver(id);

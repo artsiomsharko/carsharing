@@ -1,12 +1,14 @@
+import { Types } from "mongoose";
+import { CarModel } from "../carModels/carModels.model";
 import CarModelsService from "../carModels/carModels.service";
-import Cars from "./cars.model";
+import Cars, { Car } from "./cars.model";
 
 const carsService = {
-  getOne(params) {
+  getOne(params: Partial<Car>) {
     return Cars.findOne(params);
   },
 
-  getOneById(id) {
+  getOneById(id: Types.ObjectId) {
     return Cars.findById(id).populate("productionInfoId");
   },
 
@@ -79,7 +81,7 @@ const carsService = {
     return cars;
   },
 
-  async create(params) {
+  async create(params: Car & { productionInfo?: CarModel }) {
     let productionInfo = null;
 
     try {
@@ -99,7 +101,10 @@ const carsService = {
     }
   },
 
-  async update(id, params) {
+  async update(
+    id: Types.ObjectId,
+    params: Partial<Car & { productionInfo?: CarModel }>
+  ) {
     const car = await Cars.findByIdAndUpdate(id, params, { new: true });
 
     if (!params.productionInfoId && params.productionInfo) {
@@ -115,7 +120,7 @@ const carsService = {
   async moveOldInService() {
     const oldModelIds = (
       await CarModelsService.getAll({
-        date: { $lt: new Date("2017-01-01") },
+        date: { $lt: new Date("2017-01-01") } as any,
       })
     ).map((c) => c._id);
 
@@ -160,11 +165,11 @@ const carsService = {
     );
   },
 
-  delete(params) {
+  delete(params: Partial<Car>) {
     return Cars.deleteOne(params);
   },
 
-  async deleteByVin(vin) {
+  async deleteByVin(vin: string) {
     const car = await this.getOne({ vin });
 
     if (!car) {

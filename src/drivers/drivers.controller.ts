@@ -1,7 +1,9 @@
 import DriversService from "./drivers.service";
+import { type ParamsRequest } from "../helpers/types";
+import { Request, Response } from "express";
 
 class DriversController {
-  async getOne(req, res) {
+  async getOne(req: ParamsRequest, res: Response) {
     try {
       const driverId = req.params.id;
       const driver = await DriversService.getOne(driverId);
@@ -16,7 +18,7 @@ class DriversController {
     }
   }
 
-  async getAll(req, res) {
+  async getAll(req: Request, res: Response) {
     try {
       const drivers = await DriversService.getAll();
 
@@ -26,7 +28,7 @@ class DriversController {
     }
   }
 
-  async create(req, res) {
+  async create(req: Request, res: Response) {
     try {
       const params = req.body;
       const driver = await DriversService.create(params);
@@ -37,7 +39,7 @@ class DriversController {
     }
   }
 
-  async update(req, res) {
+  async update(req: ParamsRequest, res: Response) {
     try {
       const driverId = req.params.id;
       const params = req.body;
@@ -50,7 +52,7 @@ class DriversController {
     }
   }
 
-  async delete(req, res) {
+  async delete(req: ParamsRequest, res: Response) {
     try {
       const driverId = req.params.id;
       const deletedDriver = await DriversService.delete(driverId);

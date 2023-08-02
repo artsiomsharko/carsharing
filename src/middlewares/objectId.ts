@@ -1,9 +1,12 @@
+import { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 
-function validateObjectId(req, res, next) {
+export default function validateObjectId(
+  req: Request<{ id: string | mongoose.Types.ObjectId }>,
+  res: Response,
+  next: NextFunction
+) {
   const { id } = req.params;
-
-  console.log(req.originalUrl);
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ message: `Invalid ObjectId param: ${id}` });
@@ -11,5 +14,3 @@ function validateObjectId(req, res, next) {
 
   next();
 }
-
-export default validateObjectId;

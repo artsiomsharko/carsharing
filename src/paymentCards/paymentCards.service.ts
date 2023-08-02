@@ -1,27 +1,28 @@
-import PaymentCards from "./paymentCards.model";
+import { Types } from "mongoose";
+import PaymentCards, { PaymentCard } from "./paymentCards.model";
 
 const paymentCardsService = {
-  getOne(id) {
+  getOne(id: Types.ObjectId) {
     return PaymentCards.findById(id);
   },
 
-  getAllForDriver(driverId) {
+  getAllForDriver(driverId: Types.ObjectId) {
     return PaymentCards.find({ driverId });
   },
 
-  create(params) {
+  create(params: PaymentCard) {
     return PaymentCards.create(params);
   },
 
-  update(id, params) {
+  update(id: Types.ObjectId, params: Partial<PaymentCard>) {
     return PaymentCards.findByIdAndUpdate(id, params, { new: true });
   },
 
-  delete(id) {
+  delete(id: Types.ObjectId) {
     return PaymentCards.findByIdAndDelete(id);
   },
 
-  deleteAllForDriver(driverId) {
+  deleteAllForDriver(driverId: Types.ObjectId) {
     return PaymentCards.deleteMany({ driverId });
   },
 };

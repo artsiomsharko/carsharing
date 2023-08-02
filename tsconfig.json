@@ -5,12 +5,13 @@
     "moduleResolution": "Node",
     "outDir": "dist",
     "sourceMap": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noImplicitAny": true
   },
   "ts-node": {
     "esm": true,
     "experimentalSpecifierResolution": "node"
   },
-  "include": ["src/*"],
+  "include": ["src/*", "src/swagger/index.ts"],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,9 @@
 import PaymentCardsService from "./paymentCards.service";
+import { type ParamsRequest } from "../helpers/types";
+import { Response } from "express";
 
 class PaymentCardsController {
-  async getAllForDriver(req, res) {
+  async getAllForDriver(req: ParamsRequest, res: Response) {
     try {
       const driverId = req.params.id;
       const card = await PaymentCardsService.getAllForDriver(driverId);
@@ -12,7 +14,7 @@ class PaymentCardsController {
     }
   }
 
-  async getOne(req, res) {
+  async getOne(req: ParamsRequest, res: Response) {
     try {
       const cardId = req.params.id;
       const card = await PaymentCardsService.getOne(cardId);
@@ -27,7 +29,7 @@ class PaymentCardsController {
     }
   }
 
-  async update(req, res) {
+  async update(req: ParamsRequest, res: Response) {
     try {
       const cardId = req.params.id;
       const params = req.body;
@@ -40,7 +42,7 @@ class PaymentCardsController {
     }
   }
 
-  async create(req, res) {
+  async create(req: ParamsRequest, res: Response) {
     try {
       const driverId = req.params.id;
       const cardParams = req.body;
@@ -56,7 +58,7 @@ class PaymentCardsController {
     }
   }
 
-  async delete(req, res) {
+  async delete(req: ParamsRequest, res: Response) {
     try {
       const cardId = req.params.id;
       const deletedCard = await PaymentCardsService.delete(cardId);

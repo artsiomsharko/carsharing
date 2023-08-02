@@ -1,19 +1,20 @@
-import CarModels from "./carModels.model";
+import { Types } from "mongoose";
+import CarModels, { CarModel } from "./carModels.model";
 
 const carModelsService = {
-  getAll(params) {
+  getAll(params: Partial<CarModel>) {
     return CarModels.find(params);
   },
 
-  create(params) {
+  create(params: CarModel) {
     return CarModels.create(params);
   },
 
-  update(id, params) {
+  update(id: Types.ObjectId, params: Partial<CarModel>) {
     return CarModels.findByIdAndUpdate(id, params, { new: true });
   },
 
-  deleteById(id) {
+  deleteById(id: Types.ObjectId) {
     return CarModels.deleteOne({ _id: id });
   },
 };

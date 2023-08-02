@@ -2,11 +2,10 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
-  plugins: ["prettier"],
+  plugins: ["prettier", "@typescript-eslint"],
   parserOptions: {
     ecmaVersion: 2020,
     module: true,
@@ -23,5 +22,7 @@ module.exports = {
     "no-multiple-empty-lines": "error",
     "prefer-const": "error",
     "prettier/prettier": "error",
+    "@typescript-eslint/no-inferrable-types": "error",
+    "@typescript-eslint/typedef": "error",
   },
 };
