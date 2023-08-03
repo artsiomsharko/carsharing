@@ -18,7 +18,7 @@ function createSwaggerConfig(port: number) {
         },
       ],
     },
-    apis: ["./**/*.routes.ts", "./**/*.model.ts", './**/mongoSchemas.ts'],
+    apis: ["./**/*.routes.ts", "./**/*.model.ts", "./**/mongoSchemas.ts"],
   };
 
   return swaggerJsdoc(options);

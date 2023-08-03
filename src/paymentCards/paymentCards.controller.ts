@@ -1,20 +1,20 @@
 import PaymentCardsService from "./paymentCards.service";
 import { type ParamsRequest } from "../helpers/types";
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 
 class PaymentCardsController {
-  async getAllForDriver(req: ParamsRequest, res: Response) {
+  async getAllForDriver(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const driverId = req.params.id;
       const card = await PaymentCardsService.getAllForDriver(driverId);
 
       return res.json(card);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async getOne(req: ParamsRequest, res: Response) {
+  async getOne(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const cardId = req.params.id;
       const card = await PaymentCardsService.getOne(cardId);
@@ -25,11 +25,11 @@ class PaymentCardsController {
 
       return res.json(card);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async update(req: ParamsRequest, res: Response) {
+  async update(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const cardId = req.params.id;
       const params = req.body;
@@ -38,11 +38,11 @@ class PaymentCardsController {
 
       return res.json(updatedCard);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async create(req: ParamsRequest, res: Response) {
+  async create(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const driverId = req.params.id;
       const cardParams = req.body;
@@ -54,18 +54,18 @@ class PaymentCardsController {
 
       return res.json(card);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async delete(req: ParamsRequest, res: Response) {
+  async delete(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const cardId = req.params.id;
       const deletedCard = await PaymentCardsService.delete(cardId);
 
       return res.json(deletedCard);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 }

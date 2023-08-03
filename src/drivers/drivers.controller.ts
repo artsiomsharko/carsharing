@@ -1,9 +1,9 @@
 import DriversService from "./drivers.service";
 import { type ParamsRequest } from "../helpers/types";
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
 class DriversController {
-  async getOne(req: ParamsRequest, res: Response) {
+  async getOne(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const driverId = req.params.id;
       const driver = await DriversService.getOne(driverId);
@@ -14,32 +14,32 @@ class DriversController {
 
       return res.json(driver);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async getAll(req: Request, res: Response) {
+  async getAll(req: Request, res: Response, next: NextFunction) {
     try {
       const drivers = await DriversService.getAll();
 
       return res.json(drivers);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async create(req: Request, res: Response) {
+  async create(req: Request, res: Response, next: NextFunction) {
     try {
       const params = req.body;
       const driver = await DriversService.create(params);
 
       return res.json(driver);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async update(req: ParamsRequest, res: Response) {
+  async update(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const driverId = req.params.id;
       const params = req.body;
@@ -48,18 +48,18 @@ class DriversController {
 
       return res.json(updatedDriver);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 
-  async delete(req: ParamsRequest, res: Response) {
+  async delete(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const driverId = req.params.id;
       const deletedDriver = await DriversService.delete(driverId);
 
       return res.json(deletedDriver);
     } catch (e) {
-      res.status(500).json(e.message);
+      next(e);
     }
   }
 }

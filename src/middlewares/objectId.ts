@@ -9,7 +9,7 @@ export default function validateObjectId(
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).json({ message: `Invalid ObjectId param: ${id}` });
+    return res.status(400).json({ error: `Invalid ObjectId param: ${id}` });
   }
 
   next();

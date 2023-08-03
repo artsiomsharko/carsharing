@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import router from "./router";
 import { applySwagger } from "./swagger";
+import errorHandler from "./middlewares/error";
 
 console.clear();
 
@@ -16,6 +17,7 @@ const app = express();
 applySwagger(app, port);
 app.use(express.json());
 app.use("/", router);
+app.use(errorHandler);
 
 async function start() {
   mongoose.set("debug", true);
