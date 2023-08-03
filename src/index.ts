@@ -9,12 +9,12 @@ console.clear();
 
 dotenv.config();
 
-const port = (process.env.PORT as unknown as number) || 5000;
+const port = process.env.PORT || 5000;
 const mongoUri = process.env.MONGO_URI;
 
 const app = express();
 
-applySwagger(app, port);
+applySwagger(app);
 app.use(express.json());
 app.use("/", router);
 app.use(errorHandler);

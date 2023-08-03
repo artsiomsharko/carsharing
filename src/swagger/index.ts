@@ -1,8 +1,12 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
+import { config } from "dotenv";
 
-function createSwaggerConfig(port: number) {
+config();
+const port = process.env.LOCAL_PORT || process.env.PORT;
+
+function createSwaggerConfig() {
   const options = {
     definition: {
       openapi: "3.1.0",
@@ -24,10 +28,6 @@ function createSwaggerConfig(port: number) {
   return swaggerJsdoc(options);
 }
 
-export function applySwagger(app: Express, port: number) {
-  app.use(
-    "/api-docs",
-    swaggerUi.serve,
-    swaggerUi.setup(createSwaggerConfig(port))
-  );
+export function applySwagger(app: Express) {
+  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(createSwaggerConfig()));
 }
