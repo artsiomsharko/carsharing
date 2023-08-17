@@ -143,7 +143,7 @@ router.put("/:id", validateObjectId, cardsController.update);
  *     tags: [PaymentCards]
  *     parameters:
  *       - in: path
- *         name: vin
+ *         name: cardId
  *         schema:
  *           type: string
  *         required: true

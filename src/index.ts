@@ -4,13 +4,13 @@ import dotenv from "dotenv";
 import router from "./router";
 import { applySwagger } from "./swagger";
 import errorHandler from "./middlewares/error";
+import { connectDb } from "./db";
 
 console.clear();
 
-dotenv.config();
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const port = process.env.PORT || 5000;
-const mongoUri = process.env.MONGO_URI;
 
 const app = express();
 
@@ -22,14 +22,19 @@ app.use(errorHandler);
 async function start() {
   mongoose.set("debug", true);
 
-  await mongoose
-    .connect(mongoUri, {})
+  await connectDb()
     .then((v) => {
-      console.log("Connected to MongoDB:", v.connection.host);
+      console.log(
+        `Connected to MongoDB: ${v.connection.host}/${v.connection.db.namespace}`
+      );
     })
     .catch(console.log);
 
   app.listen(port, () => console.log("Express app started on port:", port));
 }
 
-start();
+if (process.env.NODE_ENV !== "test") {
+  start();
+}
+
+export default app;

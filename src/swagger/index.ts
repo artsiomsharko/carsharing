@@ -1,9 +1,9 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import { Express } from "express";
-import { config } from "dotenv";
+import dotenv from "dotenv";
 
-config();
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 const port = process.env.LOCAL_PORT || process.env.PORT;
 
 function createSwaggerConfig() {

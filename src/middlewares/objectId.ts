@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 
-export default function validateObjectId(
+export default function objectIdMiddleware(
   req: Request<{ id: string | mongoose.Types.ObjectId }>,
   res: Response,
   next: NextFunction
