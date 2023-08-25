@@ -15,7 +15,7 @@ export const mockCarProps = {
     | "reserved",
   fuelLevel: 77,
   mileage: 25200,
-  currentRunId: null as null | string,
+  currentRunId: null as null,
 };
 
 export const mockCarLocation = {
