@@ -65,7 +65,7 @@ class RunsController {
   async delete(req: ParamsRequest, res: Response, next: NextFunction) {
     try {
       const runId = req.params.id;
-      const deletedRun = RunsService.delete(runId);
+      const deletedRun = await RunsService.delete(runId);
 
       return res.json(deletedRun);
     } catch (e) {

@@ -17,6 +17,8 @@ describe("PaymentCardsController", () => {
     dbConnection = (await connectDb()).connection;
   });
 
+  afterAll(async () => dbConnection.close());
+
   beforeEach(async () => {
     await dbConnection.collection("paymentscards").deleteMany({});
   });
@@ -38,14 +40,6 @@ describe("PaymentCardsController", () => {
   };
 
   describe("GET /cards/driver/:id", () => {
-    beforeAll(async () => {
-      try {
-        await dbConnection.collection("paymentscards").deleteMany({});
-      } catch (e) {
-        console.log(e);
-      }
-    });
-
     it("should return array of 2 created cards for driver", async () => {
       await createPaymentCard();
       await createPaymentCard();
@@ -66,10 +60,6 @@ describe("PaymentCardsController", () => {
   });
 
   describe("POST /cards/driver/:id", () => {
-    beforeAll(async () => {
-      await dbConnection.collection("paymentscards").deleteMany({});
-    });
-
     it("should create a new payment card", async () => {
       const response = await request(app)
         .post(`/cards/driver/${mockDriverId}`)

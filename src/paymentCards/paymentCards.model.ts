@@ -31,12 +31,15 @@
  *     PaymentCard:
  *       allOf:
  *         - properties:
+ *             __v:
+ *               type: number
  *             _id:
  *               type: string
  *               description: The unique mongo id of the payment card
  *         - $ref: '#/components/schemas/NewPaymentCard'
  *         - example:
  *             _id: 649ae65e4681bbd0910bfc62
+ *             __v: 0
  *             driverId: 610fc12a895b480022c6f35a
  *             number: 1234567890123456
  *             owner: John Doe

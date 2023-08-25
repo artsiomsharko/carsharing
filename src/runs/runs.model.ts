@@ -34,12 +34,15 @@
  *     Run:
  *       allOf:
  *         - properties:
+ *             __v:
+ *               type: number
  *             _id:
  *               type: string
  *               description: The unique mongo id of the run
  *         - $ref: '#/components/schemas/NewRun'
  *         - example:
  *             _id: 649ae65e4681bbd0910bfc62
+ *             __v: 0
  *             driverId: 610f07d8748e9a5e2832b4c2
  *             carId: 610f07d8748e9a5e2832b4c3
  *             startDate: "2023-07-31T12:00:00Z"

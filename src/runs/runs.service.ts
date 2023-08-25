@@ -33,7 +33,7 @@ const runsService = {
       await carWithThisRun.save();
     }
 
-    return run;
+    return await Runs.findByIdAndDelete(id);
   },
 };
 

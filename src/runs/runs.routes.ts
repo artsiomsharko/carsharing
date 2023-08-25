@@ -64,24 +64,31 @@ router.get("/:id", validateObjectId, runsController.getOne);
 
 /**
  * @swagger
- * /runs/{id}:
+ * /runs:
  *   post:
  *     summary: Create run
  *     description: Create run
  *     tags: [Runs]
- *     parameters:
- *       - in: path
- *         name: id
- *         schema:
- *           type: string
- *         required: true
- *         description: The run id
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/NewRun'
+ *             type: object
+ *             properties:
+ *               setCurrent:
+ *                 type: boolean
+ *                 description: If true, set created run as current for car
+ *                 required: false
+ *             allOf:
+ *               - $ref: '#/components/schemas/NewRun'
+ *             example:
+ *               setCurrent: false
+ *               driverId: 610f07d8748e9a5e2832b4c2
+ *               carId: 610f07d8748e9a5e2832b4c3
+ *               startDate: "2023-07-31T12:00:00Z"
+ *               finishFuelLevel: 50
+ *               finishMileage: 5000
  *     responses:
  *       200:
  *         description: Created run

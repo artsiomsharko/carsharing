@@ -57,6 +57,8 @@
  *             _id:
  *               type: string
  *               description: The unique mongo id of the car
+ *             __v:
+ *               type: number
  *         - $ref: '#/components/schemas/NewCar'
  */
 

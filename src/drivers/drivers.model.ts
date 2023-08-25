@@ -25,12 +25,15 @@
  *     Driver:
  *       allOf:
  *         - properties:
+ *             __v:
+ *               type: number
  *             _id:
  *               type: string
  *               description: The unique mongo id of the driver
  *         - $ref: '#/components/schemas/NewDriver'
  *         - example:
  *             _id: 649ae65e4681bbd0910bfc62
+ *             __v: 0
  *             licenseNumber: A12345
  *             firstName: John
  *             lastName: Doe

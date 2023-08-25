@@ -5,7 +5,7 @@ import Cars, { Car } from "./cars.model";
 
 const carsService = {
   getOne(params: Partial<Car>) {
-    return Cars.findOne(params);
+    return Cars.findOne(params).populate("productionInfoId");
   },
 
   getOneById(id: Types.ObjectId) {
